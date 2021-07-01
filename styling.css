@@ -1,0 +1,105 @@
+.main {
+    position:absolute;
+    top:0;
+    left:0;
+    bottom:0;
+    right:0;
+    height:100%;
+    background-color: black;
+    justify-content: center;
+    
+
+    
+}
+
+.main__right {
+    flex: 0.2
+    
+}
+
+.main__videos {
+    flex-grow: 1;
+    background-color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 170px;
+    
+}
+.top{
+    justify-content: center;
+    background-color: plum;
+    top:0px;
+    
+    font-size: 35px;
+    align-items: center;
+}
+
+.main__controls {
+    background-color: #1C1E20;
+    bottom:0px;
+    
+}
+
+.main__right {
+    background-color: #242324;
+    border-left: 1px solid #3D3D42;
+    left:0px;
+   
+}
+
+.main__controls {
+    color: #D2D2D2;
+    display: flex;
+    justify-content: space-between;
+    padding: 5px;
+    bottom:0px;
+    position: absolute;
+    
+}
+
+
+.main__controls__block {
+    display: flex;
+    bottom:0px;
+}
+
+.main__controls__button {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    bottom:0px;
+  
+    align-items: center;
+    padding: 8px 10px;
+    min-width: 80px;
+    cursor: pointer;
+}
+
+
+
+
+.main__controls__button i {
+    font-size: 24px;
+}
+
+.main__right {
+    display: flex;
+    flex-direction: column;
+}
+
+
+.main__header {
+    padding-top: 5px;
+    color: #F5F5F5;
+    text-align: center;
+}
+
+
+.leave_meeting {
+    color: #EB534B;
+}
+
+.unmute, .stop {
+    color: #CC3B33;
+}
