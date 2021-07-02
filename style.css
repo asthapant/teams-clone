@@ -58,9 +58,7 @@
     position: absolute;
     
 }
-
-
-.main__controls__block {
+main__controls__block {
     display: flex;
     bottom:0px;
 }
@@ -77,9 +75,6 @@
     cursor: pointer;
 }
 
-
-
-
 .main__controls__button i {
     font-size: 18px;
 }
@@ -94,11 +89,6 @@
     padding-top: 5px;
     color: #F5F5F5;
     text-align: center;
-}
-
-
-.leave_meeting {
-    color: #EB534B;
 }
 
 .unmute, .stop {
