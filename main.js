@@ -4,8 +4,9 @@ const videoGrid2 = document.getElementById('video-grid2')
 
 let socket = io('/')
 var video = document.querySelector('video')
-let client = {}
+const inviteButton = document.querySelector("#inviteButton");
 
+let client = {}
 navigator.mediaDevices.getUserMedia({ video: true, audio: true })
     .then(stream => {
         socket.emit('NewClient')
@@ -14,7 +15,7 @@ navigator.mediaDevices.getUserMedia({ video: true, audio: true })
         video.play()
         mystream = stream;
 
-        function InitPeer(type) {
+function InitPeer(type) {
             let peer = new Peer({ initiator: (type == 'init') ? true : false, stream: stream, trickle: false })
             peer.on('stream', function (stream) {
                 CreateVideo(stream)
@@ -84,10 +85,23 @@ navigator.mediaDevices.getUserMedia({ video: true, audio: true })
         socket.on('CreatePeer', MakePeer)
         
      videoGrid.append(video);
+
     })
-    
-    
-    function setMuteButton(){
+
+    function show(){
+      prompt(
+        "Copy this link and send it to someone you want to video call with :)",
+        window.location.href
+      );
+    };
+  
+    function info(){
+      alert(
+        "Hey there! This is a video conferencing platform designed to facilitate video call between two users. It allows you to: \n\u2022Mute/Unmute your audio\n\u2022Show/Stop your video\n\u2022Invite Someone"
+      );
+    };
+
+   function setMuteButton(){
         const html = `
           <i class="fas fa-microphone"></i>
           <span>Mute</span>
@@ -117,11 +131,7 @@ navigator.mediaDevices.getUserMedia({ video: true, audio: true })
           <span>Play Video</span>
         `
         document.querySelector('.main__video_button').innerHTML = html;
-      }
-
-
-   
-      
+      }  
       
 function muteUnmute(){
         
@@ -147,6 +157,4 @@ function muteUnmute(){
           mystream.getVideoTracks()[0].enabled = true;
         }
       }
-      
-
 
