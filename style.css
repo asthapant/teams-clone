@@ -1,3 +1,4 @@
+
 .main {
     position:absolute;
     top:0;
@@ -5,11 +6,10 @@
     bottom:0;
     right:0;
     height:100%;
-    background-color: black;
+    background-color:black;
     justify-content: center;
-    
-
-    
+    border-style: groove;
+    border: 5px solid black;
 }
 
 .main__right {
@@ -19,11 +19,11 @@
 
 .main__videos {
     flex-grow: 1;
-    background-color: black;
+   
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 170px;
+    padding: 120px;
     
 }
 .top{
@@ -32,6 +32,8 @@
     top:0px;
     
     font-size: 35px;
+    color: black;
+    
     align-items: center;
 }
 
@@ -72,7 +74,7 @@
   
     align-items: center;
     padding: 8px 10px;
-    min-width: 80px;
+    min-width: 100px;
     cursor: pointer;
 }
 
@@ -80,7 +82,7 @@
 
 
 .main__controls__button i {
-    font-size: 24px;
+    font-size: 18px;
 }
 
 .main__right {
@@ -103,3 +105,4 @@
 .unmute, .stop {
     color: #CC3B33;
 }
+
