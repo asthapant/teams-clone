@@ -1,4 +1,6 @@
 let Peer = require('simple-peer')
+
+console.log(filter)
 const videoGrid = document.getElementById('video-grid')
 const videoGrid2 = document.getElementById('video-grid2')
 
@@ -6,7 +8,12 @@ let socket = io('/')
 var video = document.querySelector('video')
 const inviteButton = document.querySelector("#inviteButton");
 
+
+
 let client = {}
+
+
+
 navigator.mediaDevices.getUserMedia({ video: true, audio: true })
     .then(stream => {
         socket.emit('NewClient')
@@ -15,7 +22,9 @@ navigator.mediaDevices.getUserMedia({ video: true, audio: true })
         video.play()
         mystream = stream;
 
-function InitPeer(type) {
+
+
+        function InitPeer(type) {
             let peer = new Peer({ initiator: (type == 'init') ? true : false, stream: stream, trickle: false })
             peer.on('stream', function (stream) {
                 CreateVideo(stream)
@@ -23,6 +32,16 @@ function InitPeer(type) {
                 videoGrid2.append(video2)
                 
             })
+
+
+            peer.on('data', function (data) {
+              let decodedData = new TextDecoder('utf-8').decode(data)
+             const video3=document.getElementById('peerVideo')
+              video3.style.filter = decodedData
+          })
+          return peer
+      
+
         peer.on('close', function () {
                 document.getElementById("peerVideo").remove();
                 peer.destroy()
@@ -49,6 +68,8 @@ function InitPeer(type) {
             client.peer = peer
         }
 
+        
+
         function SignalAnswer(answer) {
             client.gotAnswer = true
             let peer = client.peer
@@ -62,11 +83,14 @@ function InitPeer(type) {
             video.srcObject = stream
             video.setAttribute('class', 'embed-responsive-item')
             document.querySelector('#peerDiv').appendChild(video)
+           
     
                 
             video.play()
             //wait for 1 sec
-            setTimeout(() => SendFilter(currentFilter), 1000)
+               
+    
+            setTimeout(() => SendFilter(filter), 1000)
 
             video.addEventListener('click', () => {
                 if (video.volume != 0)
@@ -77,8 +101,13 @@ function InitPeer(type) {
 
         }
         function SessionActive() {
-            document.write('Session Active. Please come back later')
+            document.write('Session Active with 2 users. Please come back later!')
         }
+     
+     
+      
+      
+        
         socket.on('BackOffer', FrontAnswer)
         socket.on('BackAnswer', SignalAnswer)
         socket.on('SessionActive', SessionActive)
@@ -86,7 +115,10 @@ function InitPeer(type) {
         
      videoGrid.append(video);
 
+
     })
+
+    
 
     function show(){
       prompt(
@@ -94,14 +126,34 @@ function InitPeer(type) {
         window.location.href
       );
     };
-  
+
+    
+    
     function info(){
       alert(
         "Hey there! This is a video conferencing platform designed to facilitate video call between two users. It allows you to: \n\u2022Mute/Unmute your audio\n\u2022Show/Stop your video\n\u2022Invite Someone"
       );
     };
+     
 
-   function setMuteButton(){
+    
+    function filt(){
+   
+     
+      
+      var video = document.querySelector('video')
+      const filter = document.getElementById("filters")
+     
+      let cFilter = filter.value
+
+      video.style.filter = cFilter
+
+     
+      
+      
+  }
+  
+    function setMuteButton(){
         const html = `
           <i class="fas fa-microphone"></i>
           <span>Mute</span>
@@ -131,7 +183,9 @@ function InitPeer(type) {
           <span>Play Video</span>
         `
         document.querySelector('.main__video_button').innerHTML = html;
-      }  
+      }
+
+      
       
 function muteUnmute(){
         
@@ -157,4 +211,8 @@ function muteUnmute(){
           mystream.getVideoTracks()[0].enabled = true;
         }
       }
+      
+
+
+
 
