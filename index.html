@@ -28,9 +28,11 @@
 </head>
 
 <body>
-        <h1><color='red'>Gradient Text</color></h1>
+     
     <div class="container-fluid">
         <div class="row h-10 w-100">
+
+              
             <div class="col-12 col-sm-6 d-flex justify-content-center">
                 <div class="embed-responsive embed-responsive-16by9">
                     <video class="embed-responsive-item" muted></video>
@@ -45,7 +47,7 @@
     <div class="main">
         <div class='top'> <div class='main__controls__button'>
             <i class="fas fa-video"></i>
-            <span>Video Conferencing Platform</span>
+            <span style="font-family:Merriweather"><b>Video Calling Platform </b></span>
         </div></div>
         <div class='main__controls__button'>
        
@@ -57,6 +59,7 @@
             
             </div>
            </div>
+
            <div class="main__controls">
               <div class="main__controls__block">
                  <div onclick="muteUnmute()" class="main__controls__button main__mute_button">
@@ -70,24 +73,27 @@
               </div>
               <div class="main__controls__block">
                 <div class="main__controls__button">
-                   <i class="fas fa-shield-alt"></i>
-                   <span>Security</span>
+                   <i onclick="info()" class="fas fa-shield-alt"></i>
+                   <span>About</span>
                 </div>
-                <div class="main__controls__button">
-                   <i class="fas fa-user-friends"></i>
-                   <span>Participants</span>
-                </div>
-                <div class="main__controls__button">
-                   <i class="fas fa-comment-alt"></i>
-                   <span>Chat</span>
-                </div>
+              <div onclick='show()' class="main__controls__button">
+                    <i class="fas fa-user-plus"></i>
+                    <span>Invite</span>
+                  </div>
+
              </div>
              </div> 
-                 
+                
          </div>
+
 </div>
     <script src="/socket.io/socket.io.js"></script>
     <script src='bundle.js'></script>
-    <script src='main.js'></script>  
+    <script src='main.js'></script> 
+    <script>
+        function showAlert() {
+          alert ("There are 2 Participants in the video call!");
+        }
+        </script> 
 </body>
 </html>
