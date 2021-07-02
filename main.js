@@ -8,11 +8,7 @@ let socket = io('/')
 var video = document.querySelector('video')
 const inviteButton = document.querySelector("#inviteButton");
 
-
-
 let client = {}
-
-
 
 navigator.mediaDevices.getUserMedia({ video: true, audio: true })
     .then(stream => {
@@ -68,8 +64,6 @@ navigator.mediaDevices.getUserMedia({ video: true, audio: true })
             client.peer = peer
         }
 
-        
-
         function SignalAnswer(answer) {
             client.gotAnswer = true
             let peer = client.peer
@@ -83,13 +77,10 @@ navigator.mediaDevices.getUserMedia({ video: true, audio: true })
             video.srcObject = stream
             video.setAttribute('class', 'embed-responsive-item')
             document.querySelector('#peerDiv').appendChild(video)
-           
-    
-                
+               
             video.play()
             //wait for 1 sec
-               
-    
+       
             setTimeout(() => SendFilter(filter), 1000)
 
             video.addEventListener('click', () => {
@@ -104,10 +95,6 @@ navigator.mediaDevices.getUserMedia({ video: true, audio: true })
             document.write('Session Active with 2 users. Please come back later!')
         }
      
-     
-      
-      
-        
         socket.on('BackOffer', FrontAnswer)
         socket.on('BackAnswer', SignalAnswer)
         socket.on('SessionActive', SessionActive)
@@ -117,8 +104,6 @@ navigator.mediaDevices.getUserMedia({ video: true, audio: true })
 
 
     })
-
-    
 
     function show(){
       prompt(
@@ -138,19 +123,14 @@ navigator.mediaDevices.getUserMedia({ video: true, audio: true })
 
     
     function filt(){
-   
-     
-      
+
       var video = document.querySelector('video')
       const filter = document.getElementById("filters")
      
       let cFilter = filter.value
 
       video.style.filter = cFilter
-
-     
-      
-      
+  
   }
   
     function setMuteButton(){
@@ -184,9 +164,7 @@ navigator.mediaDevices.getUserMedia({ video: true, audio: true })
         `
         document.querySelector('.main__video_button').innerHTML = html;
       }
-
-      
-      
+    
 function muteUnmute(){
         
         const enabled = mystream.getAudioTracks()[0].enabled;
@@ -211,8 +189,4 @@ function muteUnmute(){
           mystream.getVideoTracks()[0].enabled = true;
         }
       }
-      
-
-
-
-
+ 
