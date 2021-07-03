@@ -67,8 +67,7 @@ navigator.mediaDevices.getUserMedia({ video: true, audio: true })
             peer.signal(answer)
         }
         function CreateVideo(stream) {
-            
-
+      
             let video = document.createElement('video')
             video.id = 'peerVideo'
             video.srcObject = stream
@@ -98,9 +97,7 @@ navigator.mediaDevices.getUserMedia({ video: true, audio: true })
         socket.on('CreatePeer', MakePeer)
         
      videoGrid.append(video);
-
-
-    })
+  })
 
     function show(){
       prompt(
@@ -108,9 +105,7 @@ navigator.mediaDevices.getUserMedia({ video: true, audio: true })
         window.location.href
       );
     };
-
-    
-    
+ 
     function info(){
       alert(
         "Hey there! This is a video conferencing platform designed to facilitate video call between two users. It allows you to: \n\u2022Mute/Unmute your audio\n\u2022Show/Stop your video\n\u2022Invite Someone"
