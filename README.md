@@ -4,7 +4,6 @@ This is a video calling platform designed and developed in **NodeJs** using **si
 
 The application link can be shared to the other person thereby facilitating a real time video connection.
 
-- More details to be updated.
 
 
 
